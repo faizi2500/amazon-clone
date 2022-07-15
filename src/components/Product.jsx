@@ -11,6 +11,7 @@ const Product = (props) => {
     price,
     rating,
     image,
+    customclass,
   } = props;
 
   const stars = [1, 2, 3, 4, 5];
@@ -35,12 +36,16 @@ const Product = (props) => {
           {starsList}
         </div>
       </div>
-      <div className="image-half">
+      <div id={customclass} className="image-half">
         <img src={image} alt={`product ${id}`} className="product-image" />
       </div>
       <button type="button" className="atc-button">Add to basket</button>
     </div>
   );
+};
+
+Product.defaultProps = {
+  customclass: '',
 };
 
 Product.propTypes = {
@@ -49,6 +54,7 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
+  customclass: PropTypes.string,
 };
 
 export default Product;

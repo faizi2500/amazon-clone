@@ -57,6 +57,7 @@ const Home = () => (
         price={1094.98}
         rating={4}
         image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_SX355_.jpg"
+        customclass="last-horizontal-image"
       />
     </div>
   </div>
