@@ -1,0 +1,24 @@
+.container-atc-page {
+  background-color: azure;
+}
+
+.checkout-section {
+  background: white;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.first-half-checkout {
+  width: 55%;
+}
+
+.second-half-checkout {
+  width: 45%;
+}
+
+.checkout-banner-image {
+  width: 100%;
+  /* object-fit: contain; */
+  aspect-ratio: 25/6;
+}

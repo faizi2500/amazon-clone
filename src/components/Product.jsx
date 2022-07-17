@@ -1,10 +1,14 @@
-import React from 'react';
+// import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import './product.css';
+import { GlobalContext } from '../context/GlobalState';
+// import CartContext from '../context/cart/CartContext';
 
 const Product = (props) => {
+  const { addItemToList } = useContext(GlobalContext);
   const {
     id,
     title,
@@ -26,20 +30,25 @@ const Product = (props) => {
     }
   });
 
+  const addHanlder = (e) => {
+    e.preventDefault();
+    addItemToList(props);
+  };
+
   return (
     <div className="product-box">
       <div className="description-half">
         <p>{title}</p>
         <small>$</small>
         <strong>{price}</strong>
-        <div>
-          {starsList}
-        </div>
+        <div>{starsList}</div>
       </div>
       <div id={customclass} className="image-half">
         <img src={image} alt={`product ${id}`} className="product-image" />
       </div>
-      <button type="button" className="atc-button">Add to basket</button>
+      <button type="submit" className="atc-button" onClick={(e) => addHanlder(e)}>
+        Add to basket
+      </button>
     </div>
   );
 };

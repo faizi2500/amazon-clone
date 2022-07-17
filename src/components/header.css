@@ -12,9 +12,13 @@
   z-index: 100;
 }
 
-.amazon-logo-class {
+.first-section {
   width: 7%;
-  object-fit: contain;
+}
+
+.amazon-logo-class {
+  width: 100%;
+  object-fit: cover;
   margin-left: 1rem;
   margin-top: 0.5rem;
 }
@@ -69,4 +73,15 @@
 
 .shopping-icon {
   margin-right: 1rem;
+}
+
+.cart-btn {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.cart-btn:hover {
+  color: rgb(189, 192, 196);
 }
