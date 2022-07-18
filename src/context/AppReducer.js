@@ -7,7 +7,7 @@ const AppReducer = (state, action) => {
     case 'REMOVE_ITEM':
       return {
         shoppingList: state.shoppingList.filter(
-          (item) => item !== action.payload,
+          (item, index) => index !== action.location,
         ),
       };
     case 'CLEAR ALL':

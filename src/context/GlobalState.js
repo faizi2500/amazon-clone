@@ -10,7 +10,6 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  console.log(state);
 
   function addItemToList(item) {
     dispatch({
@@ -19,11 +18,12 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function removeItemFromList(e, item) {
+  function removeItemFromList(e, item, index) {
     e.preventDefault();
     dispatch({
       type: 'REMOVE_ITEM',
       payload: item,
+      location: index,
     });
   }
 
