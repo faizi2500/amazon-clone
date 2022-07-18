@@ -4,7 +4,8 @@ import './atc.css';
 import Currency from './Currency';
 
 const Atc = () => {
-  const { shoppingList } = useContext(GlobalContext);
+  const { shoppingList, removeItemFromList, clearCart } = useContext(GlobalContext);
+
   return (
     <div className="container-atc-page">
       <div className="checkout-section">
@@ -15,9 +16,21 @@ const Atc = () => {
             className="checkout-banner-image"
           />
           <h3>Your Shopping Basket</h3>
-          {shoppingList.length > 0 && <h2>{shoppingList[0].title}</h2>}
           <hr />
+          <button type="button" onClick={() => clearCart()}>Clear Cart</button>
           <div>
+            {shoppingList.length ? (
+              shoppingList.map((each) => (
+                <>
+                  <h2 key={each.id}>{each.title}</h2>
+                  <button type="button" onClick={(e) => removeItemFromList(e, each)}>
+                    Delete
+                  </button>
+                </>
+              ))
+            ) : (
+              <h2>Nothing in the list</h2>
+            )}
             <h2>Product 1</h2>
             <h2>Product 2</h2>
           </div>
