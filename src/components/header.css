@@ -85,3 +85,10 @@
 .cart-btn:hover {
   color: rgb(189, 192, 196);
 }
+
+.sign-in-btn-home-page {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+}
