@@ -1,12 +1,21 @@
 import React, { useContext } from 'react';
+import {
+  signOut,
+} from 'firebase/auth';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import './header.css';
 import { GlobalContext } from '../context/GlobalState';
+import auth from '../firebase';
 
 const Header = () => {
-  const { shoppingList } = useContext(GlobalContext);
+  const { shoppingList, user, addUser } = useContext(GlobalContext);
+
+  const singOutUser = async () => {
+    await signOut(auth);
+    addUser('');
+  };
 
   return (
     <div className="header-section">
@@ -23,10 +32,20 @@ const Header = () => {
       </div>
       <div className="header-navigation">
         <div className="nav-options">
-          <h5 className="line1-heading">Hello Guest</h5>
-          <a className="line2-heading" href="https://twitter.com/home">
-            <strong>Sign In</strong>
-          </a>
+          {user.email ? (
+            <button type="button" onClick={singOutUser}>
+              <h5 className="line1-heading">
+                Hello
+                {user.email}
+              </h5>
+              <strong>Sign Out</strong>
+            </button>
+          ) : (
+            <Link to="/login" className="sign-in-btn-home-page">
+              <h5 className="line1-heading">Hello Guest</h5>
+              <strong>Sign In</strong>
+            </Link>
+          )}
         </div>
         <div className="nav-options">
           <h5 className="line1-heading">Return</h5>
@@ -36,9 +55,7 @@ const Header = () => {
         </div>
         <div className="nav-options">
           <h5 className="line1-heading">Your</h5>
-          <a className="line2-heading" href="https://twitter.com/home">
-            <strong>Prime</strong>
-          </a>
+          <strong>Prime</strong>
         </div>
         <div id="last-option-nav" className="nav-options ">
           <Link to="/cart" className="cart-btn">

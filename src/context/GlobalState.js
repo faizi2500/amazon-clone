@@ -3,6 +3,7 @@ import AppReducer from './AppReducer';
 
 const initialState = {
   shoppingList: [],
+  user: '',
 };
 
 /* eslint-disable react/prop-types */
@@ -34,12 +35,21 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function addUser(item) {
+    dispatch({
+      type: 'User Authorized',
+      payload: item,
+    });
+  }
+
   return (
     <GlobalContext.Provider value={{
       shoppingList: state.shoppingList,
+      user: state.user,
       addItemToList,
       removeItemFromList,
       clearCart,
+      addUser,
     }}
     >
       {children}
