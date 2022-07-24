@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import CloseIcon from '@material-ui/icons/Close';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../firebase';
@@ -11,6 +12,8 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMessage] = useState('');
 
   // const [userVal, setUserVal] = useState('');
 
@@ -18,6 +21,9 @@ const Login = () => {
     onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         addUser(currentUser);
+        setTimeout(() => {
+          setSuccessMessage('');
+        }, 3000);
       } else {
         const emptyUser = '';
         addUser(emptyUser);
@@ -33,7 +39,7 @@ const Login = () => {
       setPassword('');
       navigate('/');
     } catch (error) {
-      console.log(error.message);
+      setErrorMsg(error.message);
     }
   };
 
@@ -42,15 +48,36 @@ const Login = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       setEmail('');
       setPassword('');
-      navigate('/');
+      setSuccessMessage('You are Successfully Registered');
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error.message);
     }
   };
 
   return (
     <div>
-      <h2>{user.email}</h2>
+      {successMsg
+        && (
+        <div className="success-msg">
+          <h2>{successMsg}</h2>
+        </div>
+        )}
+      {errorMsg
+        && (
+          <div className="error-msg-div">
+            <h3 className="show-error">
+              Please use correct email and password combination
+            </h3>
+            <CloseIcon
+              role="button"
+              tabIndex={0}
+              onClick={() => setErrorMsg('')}
+              onKeyDown={() => setErrorMsg('')}
+              className="error-msg-close-btn"
+            />
+          </div>
+        )}
+      <h2 className="hide-user-name">{user.email}</h2>
       <div className="login-page-logo-image-section">
         <img
           src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"

@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Atc from './components/Atc';
 import { GlobalProvider } from './context/GlobalState';
 import MobileHeader from './components/MobileHeader';
+import Footer from './components/Footer';
 
 function App() {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
@@ -86,6 +87,7 @@ function App() {
             />
           </Routes>
         </Router>
+        <Footer />
       </GlobalProvider>
     </div>
   );
