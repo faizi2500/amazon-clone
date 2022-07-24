@@ -22,6 +22,7 @@ const MobileHeader = () => {
 
   const singOutUser = async () => {
     await signOut(auth);
+    setNavOpen(false);
     addUser('');
   };
   console.log('Hello');
@@ -96,7 +97,14 @@ const MobileHeader = () => {
                   </h5>
                 </button>
               ) : (
-                <Link to="/login" className="sign-in-user-mobile-nav">
+                <Link
+                  role="button"
+                  tabIndex={0}
+                  to="/login"
+                  className="sign-in-user-mobile-nav"
+                  onClick={() => setNavOpen(false)}
+                  onKeyDown={() => setNavOpen(false)}
+                >
                   <h5 className="mobile-nav-line1-heading">
                     Hello Guest
                     <strong>Sign In</strong>

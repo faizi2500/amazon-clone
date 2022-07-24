@@ -11,7 +11,7 @@ import MobileHeader from './components/MobileHeader';
 function App() {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
   const updateMedia = () => {
-    setDesktop(window.innerWidth > 650);
+    setDesktop(window.innerWidth > 850);
   };
 
   useEffect(() => {

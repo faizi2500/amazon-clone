@@ -76,3 +76,33 @@
   font-size: 1.95rem;
   margin-block: 0.5rem;
 }
+
+@media screen and (max-width: 1500px) {
+  .login-container-info {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .login-container-info {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .login-container-info {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .login-container-info {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-container-info {
+    width: 95%;
+  }
+}
