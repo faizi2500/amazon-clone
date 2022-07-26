@@ -85,3 +85,26 @@
   margin-bottom: 1rem;
   text-align: center;
 }
+
+@media screen and (max-width: 895px) {
+  .checkout-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .checkout-banner-image {
+    order: 1;
+    width: 100%;
+  }
+
+  .first-half-checkout {
+    width: 100%;
+    order: 1;
+  }
+
+  .second-half-checkout {
+    order: 0;
+    width: 100%;
+  }
+}
