@@ -1,0 +1,9 @@
+.checkout-container-with-list {
+  height: 100vh;
+  background-color: aqua;
+}
+
+.checkout-container-withoutlist {
+  height: 100vh;
+  background-color: olive;
+}

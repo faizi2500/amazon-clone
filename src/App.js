@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -8,6 +10,11 @@ import Atc from './components/Atc';
 import { GlobalProvider } from './context/GlobalState';
 import MobileHeader from './components/MobileHeader';
 import Footer from './components/Footer';
+import Checkout from './components/Checkout';
+
+const stripePromise = loadStripe(
+  'pk_test_51LQUDGH4pWBnAXBEogpuJ6lMvCStTz0pZbIPokFavSzHNdav8iZdpRHDnMEKhQDBzQ94CERnEOavd9uDs4UBbHen00pkZSJInp',
+);
 
 function App() {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
@@ -79,6 +86,28 @@ function App() {
                       <>
                         <MobileHeader />
                         <Login />
+                      </>
+                    )}
+                  </>
+                )
+              }
+            />
+            <Route
+              path="/payments"
+              element={
+                (
+                  <>
+                    {isDesktop ? (
+                      <>
+                        <Header />
+                        <Elements stripe={stripePromise}>
+                          <Checkout />
+                        </Elements>
+                      </>
+                    ) : (
+                      <>
+                        <MobileHeader />
+                        <Checkout />
                       </>
                     )}
                   </>

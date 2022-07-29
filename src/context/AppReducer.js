@@ -4,6 +4,7 @@ const AppReducer = (state, action) => {
       return {
         ...state,
         shoppingList: [...state.shoppingList, action.payload],
+        total: state.total + action.payload.price,
       };
     case 'REMOVE_ITEM':
       return {
@@ -11,11 +12,13 @@ const AppReducer = (state, action) => {
         shoppingList: state.shoppingList.filter(
           (item, index) => index !== action.location,
         ),
+        total: state.total - action.payload.price,
       };
     case 'CLEAR ALL':
       return {
         ...state,
         shoppingList: [],
+        total: 0,
       };
     case 'User Authorized':
       return {

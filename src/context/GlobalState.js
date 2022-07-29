@@ -4,6 +4,7 @@ import AppReducer from './AppReducer';
 const initialState = {
   shoppingList: [],
   user: '',
+  total: 0,
 };
 
 /* eslint-disable react/prop-types */
@@ -45,6 +46,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider value={{
       shoppingList: state.shoppingList,
+      total: state.total,
       user: state.user,
       addItemToList,
       removeItemFromList,
