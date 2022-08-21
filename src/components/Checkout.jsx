@@ -43,7 +43,6 @@ const Checkout = () => {
       console.log('result');
       clearCart();
     });
-    // console.log(result);
     navigate('/cart');
   };
 
